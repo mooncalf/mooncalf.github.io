@@ -52,7 +52,8 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background: #fafafa !important;
+    /*background: #fafafa !important;*/
+    background: #8a8a8a !important;
 }
 	
 html {
@@ -74,6 +75,7 @@ a {
     text-decoration: none !important;
     color: #800000;
     font-weight: 450;
+    font-size: 1.2em;
 }
 
 a:hover,
@@ -111,7 +113,7 @@ button {
 }
 
 .page-body {
-    background: #ffffff;
+    background: #f0f0f0;
     box-shadow: -2px -1px 88px 0px rgba(0,0,0,0.17);
 }
 
@@ -136,8 +138,10 @@ button {
 .content-page {
     padding-top: 30px;
     padding-bottom: 60px;
-    border-top: 1px dashed #dedede;
-    border-bottom: 1px dashed #dedede;
+    /*border-top: 1px dashed #dedede;*/
+    border-top: 1px dashed #505050;
+    /*border-bottom: 1px dashed #dedede;*/
+    border-bottom: 1px dashed #505050;
 }
 
 .grabbing {
@@ -216,7 +220,6 @@ button {
     left: 75%;
     opacity: 1;
 }
-
 
 
 /* Preloader */
@@ -640,7 +643,7 @@ div.blog-post {
 
 .blog-post p {
     font-size: 16px;
-    line-height: 30px;
+    line-height: 25px;
     color: #696868;
     font-weight: 300;
     letter-spacing: 0.8px;
