@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document with Progress Bar</title>
+    <title>Document with Progress Bar and Line Count</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -34,6 +34,16 @@
             background: #af0000;
             width: 0%;
         }
+
+        .line-count {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -42,8 +52,9 @@
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
+    <div class="line-count" id="lineCount">0 lines left</div>
 
-    <div class="content">
+    <div class="content" id="content">
 <h1>Worse Than Nothing</h1>
 
 <p>Greg slides out of his truck onto legs unsteady after a long, unbroken drive. The air is warm and thick, fetid, like
@@ -404,12 +415,37 @@
     </div>
 
     <script>
+        // Function to count lines in the content
+        function countLines(contentId) {
+            const content = document.getElementById(contentId);
+            const lines = content.innerText.split(/\r\n|\r|\n/).length;
+            return lines;
+        }
+
+        // Function to update the line count as the user scrolls
+        function updateLineCount(contentId, lineCountId) {
+            const content = document.getElementById(contentId);
+            const lineCountElem = document.getElementById(lineCountId);
+            const totalLines = countLines(contentId);
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolledPercentage = scrollTop / scrollHeight;
+            const linesLeft = Math.max(0, Math.round(totalLines * (1 - scrolledPercentage)));
+            lineCountElem.innerText = `${linesLeft} lines left`;
+        }
+
         // Update the progress bar as the user scrolls
         window.onscroll = function () {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             var scrolled = (winScroll / height) * 100;
             document.getElementById("progressBar").style.width = scrolled + "%";
+            updateLineCount('content', 'lineCount');
+        };
+
+        // Initialize line count when the page loads
+        window.onload = function () {
+            updateLineCount('content', 'lineCount');
         };
     </script>
 
