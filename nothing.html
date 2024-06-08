@@ -2,458 +2,563 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Worse Than Nothing - Short Fiction</title>
-    <style>
-        body {
-            font-family: "Courier Prime";
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color:black;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worse Than Nothing - Short Fiction</title>
+  <style>
+    body {
+      font-family: "Courier Prime";
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
 
-        .content {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-            color: #f0f0e0;
-        }
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      color: #f0f0e0;
+      font-size:14pt;
+    }
 
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: #888;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background: #222;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
 
-        .progress-bar {
-            height: 8px;
-            background: #af0000;
-            width: 0%;
-        }
+    .progress-bar {
+      height: 4px;
+      background: #b09000;
+      width: 0%;
+    }
 
-        .line-count {
-            position: fixed;
-            top: 10px;
-            right: 20px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-    </style>
+    .line-count {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <div class="line-count" id="lineCount">0 lines left</div>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="line-count" id="lineCount">0 lines left</div>
 
-    <div class="content" id="content">
-<h1>Worse Than Nothing</h1>
+  <div class="content" id="content">
+    <h1>Worse Than Nothing</h1>
 
-<!-- <blockquote style="font-variant: small-caps"">
+    <!-- <blockquote style="font-variant: small-caps"">
   <p><i>More distressing even than silence—an incomprehensible message.</i></p>
 </blockquote> -->
 
-<p>Greg slides out of his truck onto legs unsteady after a long, unbroken drive. The air is warm and thick, fetid, like
-  the breath of a heavy, monstrous animal. The taste of it is sickeningly intimate and immediately brings back a hundred
-  unwelcome memories.</p>
-
-<p>Hank sits waiting outside his cabin in an old green-backed, rusty metal wheelchair, his grizzled face an exaggerated
-  hang-dog. He raises a slow hand in greeting as if to do more would take more life than he has left in him.</p>
-
-<p>“What’s with the chair?” Greg asks him without preamble, playing his part with the confidence of lifelong practice.
-  Hank doesn’t hesitate to take the cue, telling his nephew of his latest calamity, suddenly vigorous.</p>
-
-<p>“Fell on my goddamned face!” he explains. “Eight stitches,” he adds, pointing to a chin so thick with tangled gray
-  beard that any evidence to his claim is hopelessly buried. But Greg has no doubts.</p>
-
-<p>“Were you drunk?” Greg asks.</p>
-
-<p>“Yeah I was fuckin’ drunk!” Hank retorts, as if there could be no stupider question.</p>
-
-<p>Greg asks him how an injury on his chin necessitates being chair-bound.</p>
-
-<p>Hank insists that being on his feet is risky. His doctor has told him to stop drinking, but Hank knows it’s not the
-  drunkenness but the sobering up that’s more dangerous. He tells his nephew in dramatic tones about the lead singer of
-  his favorite metal band, how he was fine until he quit the booze, then got sick and was dead within a month. Alcohol
-  may be bad, sure enough, but sobering up is worse, Hank’s decided. Greg thinks that, in his own case, he may be right.
-  Better on the bottle.</p>
-
-<p>“My body’s just used to the sauce now, doesn’t know what to do without it…” So to be on the safe side he keeps his
-  drunk ass in the chair, at all times a bottle of whisky sloshing in his lap.</p>
-
-<p>Greetings now observed, Hank gets down to business. “You gotta go take care of them cats. And Reba!” he commands. He
-  rolls after Greg with great effort over the uneven ground toward his cabin. “She must be half starved. That dog and
-  those cats are the only thing he ever gave a shit about. I can’t believe he just up and left them alone like that.”
-  Greg wonders if he’s only imagining a hint of pain in his uncle’s voice, that he might include himself in the list of
-  those abandoned.</p>
-
-<p>“Almost seems inconsiderate, doesn’t it?” Greg says.</p>
-
-<p>Hank gives his nephew wary side-eye, suspicious of mockery but too drunk to be sure, or care much. </p>
-
-<p>“Still just you up here?” Greg asks him, looking out at the forest as if he might spot some sign of others he’d
-  missed on the way in. An excuse to look away from what has become of his uncle.</p>
-
-<p>“Yup. And those goddamn hillbillies, of course.”</p>
-
-<p>This is Hank’s sarcastic name for the family that has lived above the compound on the Mountain since long before
-  Greg’s dad bought the land. Literal centuries, maybe. His dad never asked them to leave or to pay a penny in rent. To
-  Hank’s chagrin.</p>
-
-<p>“They’re still around?”</p>
-
-<p>“Oh yeah, squattin’ up there somewhere. I guess I could get rid of them now that the place is mine. But it just ain’t
-  worth the trouble. Anyway, I know your dad would want them to stay. God fuckin’ knows why.”</p>
-
-<p>Greg has no doubt there’s more to it than that—Hank wanting people around up here, even if he rarely sees them and
-  considers them somewhat less than human. What else to gnash his few remaining teeth at?</p>
-
-<p>He remembers the little girl, a sad slip of a thing. She’d be a grown woman now. Probably never left the Mountain
-  more than a day in her life. He winces at the thought.</p>
-
-<p>She used to come down from her parents’ shack and visit the old man. For some reason. Desperate for company, Greg
-  supposes. She was odd. Barely spoke. Didn’t need to, really, as his dad was happy to fill in all the gaps in
-  conversation. He would let loose thoughtful monologues at the tiny creature as if he had no idea the girl was unlikely
-  to comprehend a word of it. Say the kinds of personal things one would reserve for a confidante, a brother-in-arms, a
-  shrink. Greg found it tasteless and a bit obscene, but that was Dad—no sense of boundaries. Of course, the kid never
-  seemed to mind.</p>
-
-<p>Now she has a kid of her own, one even more odd, claims Hank. </p>
-
-<p>“He’s come down here snootin’ around a few times since your dad’s been gone. I run him off. Never says a word, just
-  gawks at you with them big eyes. Gives me the fuckin’ willies. He used to sit up there when your dad was workin’ on
-  his truck, sit there and listen to all your dad’s b.s., just the way his mama did when she was little. Mountain people
-  are a weird fuckin’ bunch. I guess them two is the last, though. I don’t suppose the world’s gonna miss them much.”
-</p>
-
-<p><br /></p>
-
-<p>When he gets up to his father’s cabin Greg finds the cats screaming hungry and he pours piles of food in the floor
-  for them which they attack in a frenzy, fighting with each other over it despite there being plenty. But no sign of
-  his father’s big greyhound. He calls her from the front porch. Nothing. All the better, he thinks. What to do with all
-  these fucking cats, though?</p>
-
-<p>The older cats won’t come up on the tables and countertops, no matter how he coaxes them, but the young ones quickly
-  learn that nothing is now off-limits. Despite their recent near starvation they are all too fat and he makes promises
-  to get them fit, but will soon fall into a routine of feeding them whenever they ask.</p>
-
-<p>He spies a kid’s toy sitting on a table by the front door, inexplicable, at odds with all the rest of the junk. A
-  plaything amidst the trappings of a practical and joyless life that has long forgotten play. A little plastic
-  superhero set carefully on its feet, one fist raised as if in salute, posed. Was it there before the old man did
-  himself in? Had his dad left it as a farewell? The neighbor’s kid, as an offering? The old man would never tell, and
-  the kid wouldn’t either. A secret between them forever.<br /></p>
-
-<p>He looks around his father’s tiny cabin. Very little sign of the old man here, despite living here almost fifty
-  years. His father couldn&#39;t be bothered to take care of himself, didn’t care to invest much in his own comfort. Not
-  selfless, Greg knows, just believing that taking care of things was someone else&#39;s job. His wife’s. After she died
-  and there wasn&#39;t anyone to do it, all fell into disrepair, an entire life neglected. </p>
-
-<p>Everyone thought his father was such a tough guy. But Greg knows that, in truth, he feigned toughness out of a
-  powerful vanity that was the only impulse stronger in him than fear.</p>
-
-<p>When his wife died he crumbled and his vanity crumbled with him. Fear became his only drive and he hid up here on the
-  Mountain for the rest of his days with no-one but his son and brother as witness. He batted around the compound, a
-  rudderless derelict, hopelessly adrift, slowly going under.<br /></p>
-
-<p>The first night he’s here, Greg stands out on the front porch smoking a cigarette he found rolling around in his
-  father’s desk drawer, the last of its kind. He hasn’t smoked in years and the unfiltered tobacco makes him dizzy. He
-  gazes into the darkness between the trees, feeling momentarily sentimental despite his efforts. How ignorant was he as
-  a kid to see this desolate, neglected place as magical? Dim memories creep up on him, distant feelings of the woods as
-  endless and full of mystery, before he got old enough to realize just how close was the highway with its trash and
-  roar and stink. With its certain, sad destinations.<br /></p>
-
-<p>He lives off the odds and ends left in his father’s pantry and freezer for as long as they last. Frozen boxes of
-  various animal bits, “best by” dates long past. </p>
-
-<p>Every morning he is up before the sun, wrapped in his sleeping bag at the dingy little desk, checking his bank
-  account on an ancient laptop he thinks he probably couldn’t lift with one hand.</p>
-
-<p>Still nothing. He snaps the laptop shut and the room falls back into darkness, the morning light gray and reluctant.
-  He’ll have to ask Hank for help. He stomps his socked feet against the hard wooden floor in frustration. A satisfying
-  boom. He hears a rustle somewhere above him. Rats? A bird, maybe. He sits in silence for a moment, listening, but
-  hears only the early morning sounds of the forest outside.</p>
-
-<p>He feels raw. His stomach churns and aches like he has a hangover, despite incurring no debt the night before. He’s
-  up too early, but the thought of crawling back into his father’s creaky, lumpy, musty bed repels him. He nods off a
-  few times sitting at the desk before forcing himself up and into the claustrophobic shower.<br /></p>
-
-<p>Greg eyes the bathroom door before going in. That’s where his father died, hanging against that thing, he knows. He
-  was found with a belt thrown over the top and the door closed to hold it, the other end buckled around his neck. He
-  got drunk enough first that he wouldn’t be able to change his mind at the last moment. Just in case. If he did
-  struggle at the end there’s no sign of it now. Just a door, a simple machine his father put to sinister use. He tries
-  not to imagine it. Could have been worse, Greg supposes. But he hesitates a moment before grabbing the knob and going
-  in, as if the door might still hold some hint of the deed. He feels nothing but the cold metal of the knob in his
-  hand.<br /></p>
-
-<p>Greg had a friend whose kid killed themselves while still a teenager, leaving behind a garbled note. Often when he
-  spoke to his friend the conversation would turn to the short, scribbled letter, his friend obsessed with finding a
-  secret message hidden in obvious nonsense. He would bash his head against this bloodied wall again and again, reading
-  and rereading his kid’s pain-addled gibberish, searching for meaning coded in screeching static. An explanation. A
-  reason. A farewell.</p>
-
-<p>Greg’s father left nothing. Neither word nor sign. Greg feels grateful for this when he thinks of his friend’s vain
-  and endless struggle.</p>
-
-<p>More distressing even than silence—an incomprehensible message.<br /></p>
-
-<p>Despite being shoddy and cheap, the shower is hot and strong and he drifts off again with its tiny fingers massaging
-  his scalp, his back pressed against the flimsy metal of the shower wall. He half-dreams of all the cold and achy
-  people of the world and wishes them each such a momentary reprieve. How hard-won such a minor thing can be, he thinks.
-  Something that should be taken for granted.<br /></p>
-
-<p>Out on the porch again, hair wet, blood warmed. He can see no further into the forest this morning than the night
-  before, but the thick blanket of fog that clings to the trees glows bright white from the hidden morning sun. He feels
-  some peace out here when all is quiet and hidden. He begins to make a habit of coming out to escape the oppressive
-  early morning gloom of the little cabin.</p>
-
-<p>At first these morning vigils are lonely affairs, but after a few days the cats grow accustomed enough to his
-  presence that they begin to creep out on the porch with him, perching on the rail or in the chair next to his. They
-  seem to desire his company even though they are yet unsure of his character. By the end of the week the largest tom
-  cat has taken to curling up in his lap, on the condition that Greg not attempt to lay a finger on him. It purrs
-  silently but he can feel it—a strong, deep rumble of contentment. Greg dozes with its warm weight on his legs. The
-  sounds of the forest muffled by the heavy fog lull him, and he dreams of all the mornings his father sat here,
-  watching the forest through half-lidded eyes, a cat in his lap. Nothing changes. Nothing stays the same.<br /></p>
-
-<p>Digging through his father’s things, he finds a trunk shoved back in the closet, locked. He can’t quite bring himself
-  to care enough to search too hard for a key, or try to break it open. Can’t be anything of any value in it anyway. His
-  dad’s memorabilia. Bits of junk. He kicks it and thinks it sounds empty. Just like his dad to lock an empty chest, he
-  tells himself, and then wonders what he means by it. He eventually decides to forget about it. There will be many
-  things he’ll have to leave alone, things forgotten, questions unanswered, mysteries unsolved. The old trunk is just
-  another of these.<br /></p>
-
-<p>Days pass in isolation, just him and the cats and the droning of the forest around them, pierced at times by the
-  sound of Hank’s frenetic music from down the Mountain. Greg begins to feel as if he’s waiting for something, but can’t
-  decide what it might be. </p>
-
-<p>Mysterious signs appear everywhere. A mark rather like a handprint in the rime on a window. Something random missing
-  from his nightstand. Strange sounds like someone weeping. One dim, misty morning, he thinks he sees shadows moving
-  between the trees but doubts his vision. The Mountain is playing tricks on him.</p>
-
-<p>Then, three visits in as many days.<br /></p>
-
-<p>The first is Reba, his dad’s missing greyhound. He spots her through the window one afternoon, sneaking up onto the
-  porch, nose to the ground. Searching for a hint of where her old man has gone. She flees as Greg opens the door to
-  approach her, and joins a motley crew of other dogs loitering in the trees nearby, a feral pack that wanders the woods
-  of the mountainside. Some abandoned, some marooned. A few escapees. </p>
-
-<p>She watches him, a wild gray spirit between the dark trees, her long neck and ears craned toward him, curious,
-  perhaps a glimmer of recognition in her pale eyes. He calls to her and she hesitates a moment longer than the others
-  before turning away. He does not see her again.<br /></p>
-
-<p>Early the next day while he is nodding off at his father’s desk, he is visited by another silent phantom. Leaning
-  back in the little wooden chair, both it and his back creaking in complaint, he suddenly realizes a tiny white face is
-  hovering in the darkness beside him. He is so startled that he nearly tumbles over backward before catching and
-  righting himself.</p>
-
-<p>The neighbor’s kid. It makes no sound and does not react to Greg’s display of surprise. After the initial shock at
-  this appearance wears off and the pounding of his heart ebbs some, Greg regards his visitor and is immediately put in
-  mind of the wan, emaciated children who lurk beneath the cloak of Dickens’ Ghost of Christmas Present.
-  <em>Ignorance</em> and <em>Want</em>. This kid could be either, Greg thinks. Perhaps both. </p>
-
-<p>The longer he tries to communicate with it the more disturbed he becomes by the little creature’s unsettling silence.
-  Eventually, chafed at having to stoop to Hank’s level as he sees it, Greg shoos the kid away like a stray animal. It
-  turns and departs slowly, its movements oddly languid for a child. It grabs the little toy figure off the table beside
-  the door as it goes, and Greg gets the uncomfortable feeling that the kid has more right to be here than he does
-  himself. Strange, but less of a stranger.<br /></p>
-
-<p>The day after, the kid returns, this time towed behind its mother. She has the air of someone on a mission, Greg
-  thinks with a frown.</p>
-
-<p>At the door, Greg searches her face for signs of the little girl she had been but sees not a glimmer. She looks like
-  any other adult now. Tired, spent.</p>
-
-<p>“I was real sorry to hear about your daddy,” she says, stepping past him into the cabin, “he was a good man.”</p>
-
-<p>Greg nods silently, the only answer he can muster at the moment.</p>
-
-<p>“Do you know why he done it?” She asks, wanting to understand, an imploring look in her eyes. As if Greg is any more
-  likely to be privy to such knowledge than she.</p>
-
-<p>“Sick of living, I guess,” Greg tells her bluntly.</p>
-
-<p>She nods as if this explains everything. As if she understands. Perhaps she does.</p>
-
-<p>“I ain’t been sleeping,” she tells Greg, seemingly apropos of nothing. </p>
-
-<p>After a moment of awkward silence she adds “Your daddy was real good about helping me out.” Her voice is weak,
-  hesitant. A pleading edge.</p>
-
-<p>“Helping you out?” Greg asks.</p>
-
-<p>“With medicine,” she explains.</p>
-
-<p><em>Of course.</em></p>
-
-<p>Without another word, he goes into the bathroom and opens the medicine cabinet behind the mirror where he finds a
-  prescription bottle of pain medication. He grabs it and gives it a shake. Half full, about. </p>
-
-<p>As he turns to leave the bathroom he stumbles over the kid who’s appeared behind him, something shiny in its grubby
-  little hand. Greg sees it’s his dad’s straight razor and quickly snatches it away.</p>
-
-<p>“Not a toy,” he says, tossing the razor into the sink with a clatter.</p>
-
-<p>He takes the bottle to the woman and when she sees it her eyes light up like a cat spotting a mouse.</p>
-
-<p>“Thank you so much!” she says, snatching the bottle from him.</p>
-
-<p>She stops herself as she turns to go.</p>
-
-<p>“I sure will miss him.”</p>
-
-<p>Greg nods in acknowledgment more than agreement. As she leaves she grabs the kid by the arm and drags it after her
-  when it shows no sign of following on its own.</p>
-
-<p>Greg can see she’s eager to get the pills down. Maybe with a vodka chaser. </p>
-
-<p><em>Sweet dreams.</em><br /></p>
-
-<p>The kid is back by sunset that night, alone. Its arms and face are smeared with something that looks black in the
-  half light but red when Greg looks more closely. Blood gone tacky, a few hours old. Too much for a bloody nose. Greg
-  looks the kid over but sees no wounds. </p>
-
-<p>“Are you hurt? Whose blood is this?” Greg asks it, but gets the answer he expects—the kid stares at him silently.
-</p>
-
-<p>“Where’s your mama? Is she hurt?” </p>
-
-<p>Silence.</p>
-
-<p>Greg sighs heavily. “Show me where your house is,” Greg tells the kid, more annoyed than concerned. He imagines the
-  woman fallen in a drugged-up stupor, her head split open on a hard kitchen floor or upon cement steps to a back yard.
-</p>
-
-<p>It’s a lot of blood.</p>
-
-<p>Greg pulls a hoodie over his head, feeling a momentary sting of shame as the kid’s in a ragged t-shirt and shorts,
-  its feet bare, though it doesn’t seem to mind the chill.</p>
-
-<p>“Show me your house,” Greg repeats his command to the child. He pushes it toward the door when it shows no sign of
-  moving. It plods off at a medium pace, heading down the porch stairs and out into the woods. Greg follows.</p>
-
-<p>A path takes them between the trees, higher up the Mountain, and ends in a small, shabby shack. The windows are dark,
-  no sign of lights within, though the sun is down now and dim evening has claimed the woods around it. </p>
-
-<p>The kid walks straight up to the front and goes in, letting the ragged screen door swing shut behind him. Greg
-  catches it before it slams and follows the kid into the cramped little house. </p>
-
-<p>“Hello there!” Greg calls out, but the house is as silent as his guide.</p>
-
-<p>The kid goes down a little hallway and through a doorway at the end. Greg steels himself as he enters after it, half
-  expecting the woman to be sprawled on the floor somewhere in a pool of blood. </p>
-
-<p>The woman lies in bed, atop the bedspread, dressed in the same clothes she wore when he saw her. Her skin is so pale
-  it seems to shine in the darkness, the shadows around her eyes so deep he can’t tell if they are open or shut but he
-  feels as if she’s staring across the room at him.</p>
-
-<p>The kid takes something off the nightstand next to the bed and then crawls into bed next to her, curling up against
-  her. The woman is utterly still. </p>
-
-<p>One of her arms and the side of the bed are streaked and stained dark.</p>
-
-<p>Greg creeps toward the bed and looks more closely, hesitant, like he fears a wild animal there, ready to strike. Her
-  arm is slashed to ribbons. Maybe a dozen deep cuts. Maybe more. The bottle of pain pills is on the nightstand next to
-  her, beside a nearly empty bottle of whiskey. The bed clothes appear soaked with blood.</p>
-
-<p>At first he thinks she’s taken his father’s example and done herself in. Her hands are empty, but he sees the kid’s
-  are not. In one hand it holds what looks like his father’s straight razor. He can see its glint in the darkness. The
-  kid must have snatched it again after Greg took it away. A terrible thought strikes him.</p>
-
-<p>“Did you do this?” he asks the kid, the cold grip of shock closing around him.</p>
-
-<p>The kid holds the blade up to Greg as if showing him a new toy, dark eyes fixed on the gleaming, bloody blade. </p>
-
-<p>Greg studies the woman’s face. She does not look like she’s sleeping. She looks like a lifeless thing. “She’s fucking
-  dead,” Greg tells the kid, surprised by the flat, expressionless tone of his own voice.</p>
-
-<p>As he stands frozen, staring at the dead woman, the kid reaches up and opens her cheek up with the razor in one
-  stroke, like drawing a line with a pencil on smooth paper. The skin pulls back to reveal the woman’s teeth in a grisly
-  lopsided grin. The kid turns back toward Greg and holds the blade up to him again, sharing a new discovery, its eyes
-  still locked on the blade in apparent fascination.</p>
-
-<p>Greg quickly steps toward the bed and reaches out to take the razor from the kid, terror at the thought of witnessing
-  further mutilation breaking through his shock. The kid cuts Greg’s hand in a single, swift motion, laying the skin of
-  his palm open in a wide gash. Greg hisses in pain and surprise, snatches his wounded hand back, staring in momentary
-  disbelief at the cut. Slowly it begins to dribble blood and Greg grasps it with his other hand, looking up at the kid,
-  transfixed.</p>
-
-<p>“You little fucking bastard,” he says in a voice still oddly emotionless, as if the kid’s strange apathy has infected
-  him.</p>
-
-<p>Moments pass as the blood from Greg’s hand begins to run down the front of him, soaking his shirt and coating his
-  other hand in slippery gore.</p>
-
-<p>Suddenly, on some silent cue, Greg turns and strides from the room, down the hall, out the door, and back down the
-  path, walking swiftly and clutching his hand, which has begun to burn like it’s gripping hot coals.<br /></p>
-
-<p>He heads back to his father’s cabin in the dark, holding his bleeding hand against his chest, nearly losing his way
-  several times, stumbling often on the uneven path.</p>
-
-<p>When he finally finds his way back he wraps a torn shirt around the wound and stands in the middle of the room for
-  several minutes before a resolve like panic suddenly seizes him, another silent cue, and he begins throwing his meager
-  belongings into his backpack, mindlessly piling it all in and heading for the door like a man threatened by fire.</p>
-
-<p>At the last moment he drops his pack, grabs the heavy bag of cat food and up-ends it onto the floor, scattering its
-  remaining contents with a clatter. He grabs his pack again and pushes his way out the door.</p>
-
-<p>As he heads for the truck his eyes search the darkness in horrified shame, but there is no sign of witness. He throws
-  his loaded backpack into the back and hops in, starts the engine, and tears out of the compound going too fast,
-  fighting the urge to floor the gas and race down the dark, narrow road.</p>
-
-<p>He figures the woman’s body could lie up there undiscovered for a very long time. Years, maybe. He imagines the kid
-  going feral, growing up wild and living off the land while its mother’s body rots in bed. Or maybe it’ll just curl up
-  next to her and wither away.</p>
-
-<p>He follows the winding road back down the mountainside. As the distance between him and the top of the Mountain
-  grows, a powerful feeling of relief grows with it. As if distance is enough.</p>
-
-<p>It is not until he’s almost reached the foot of the Mountain that he remembers he has nowhere to go.</p>
-
-    </div>
-
-    <script>
-        // Function to count lines in the content
-        function countLines(contentId) {
-            const content = document.getElementById(contentId);
-            const lines = content.innerText.split(/\r\n|\r|\n/).length;
-            return lines;
-        }
-
-        // Function to update the line count as the user scrolls
-        function updateLineCount(contentId, lineCountId) {
-            const content = document.getElementById(contentId);
-            const lineCountElem = document.getElementById(lineCountId);
-            const totalLines = countLines(contentId);
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolledPercentage = scrollTop / scrollHeight;
-            const linesLeft = Math.max(0, Math.round(totalLines * (1 - scrolledPercentage)));
-            lineCountElem.innerText = `${linesLeft} lines left`;
-        }
-
-        // Update the progress bar as the user scrolls
-        window.onscroll = function () {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-            updateLineCount('content', 'lineCount');
-        };
-
-        // Initialize line count when the page loads
-        window.onload = function () {
-            updateLineCount('content', 'lineCount');
-        };
-    </script>
+    <p>Greg slides out of his truck onto legs unsteady after a long, unbroken drive. The air is warm and thick, fetid,
+      like
+      the breath of a heavy, monstrous animal. The taste of it is sickeningly intimate and immediately brings back a
+      hundred
+      unwelcome memories.</p>
+
+    <p>Hank sits waiting outside his cabin in an old green-backed, rusty metal wheelchair, his grizzled face an
+      exaggerated
+      hang-dog. He raises a slow hand in greeting as if to do more would take more life than he has left in him.</p>
+
+    <p>“What’s with the chair?” Greg asks him without preamble, playing his part with the confidence of lifelong
+      practice.
+      Hank doesn’t hesitate to take the cue, telling his nephew of his latest calamity, suddenly vigorous.</p>
+
+    <p>“Fell on my goddamned face!” he explains. “Eight stitches,” he adds, pointing to a chin so thick with tangled
+      gray
+      beard that any evidence to his claim is hopelessly buried. But Greg has no doubts.</p>
+
+    <p>“Were you drunk?” Greg asks.</p>
+
+    <p>“Yeah I was fuckin’ drunk!” Hank retorts, as if there could be no stupider question.</p>
+
+    <p>Greg asks him how an injury on his chin necessitates being chair-bound.</p>
+
+    <p>Hank insists that being on his feet is risky. His doctor has told him to stop drinking, but Hank knows it’s not
+      the
+      drunkenness but the sobering up that’s more dangerous. He tells his nephew in dramatic tones about the lead singer
+      of
+      his favorite metal band, how he was fine until he quit the booze, then got sick and was dead within a month.
+      Alcohol
+      may be bad, sure enough, but sobering up is worse, Hank’s decided. Greg thinks that, in his own case, he may be
+      right.
+      Better on the bottle.</p>
+
+    <p>“My body’s just used to the sauce now, doesn’t know what to do without it…” So to be on the safe side he keeps
+      his
+      drunk ass in the chair, at all times a bottle of whisky sloshing in his lap.</p>
+
+    <p>Greetings now observed, Hank gets down to business. “You gotta go take care of them cats. And Reba!” he commands.
+      He
+      rolls after Greg with great effort over the uneven ground toward his cabin. “She must be half starved. That dog
+      and
+      those cats are the only thing he ever gave a shit about. I can’t believe he just up and left them alone like
+      that.”
+      Greg wonders if he’s only imagining a hint of pain in his uncle’s voice, that he might include himself in the list
+      of
+      those abandoned.</p>
+
+    <p>“Almost seems inconsiderate, doesn’t it?” Greg says.</p>
+
+    <p>Hank gives his nephew wary side-eye, suspicious of mockery but too drunk to be sure, or care much. </p>
+
+    <p>“Still just you up here?” Greg asks him, looking out at the forest as if he might spot some sign of others he’d
+      missed on the way in. An excuse to look away from what has become of his uncle.</p>
+
+    <p>“Yup. And those goddamn hillbillies, of course.”</p>
+
+    <p>This is Hank’s sarcastic name for the family that has lived above the compound on the Mountain since long before
+      Greg’s dad bought the land. Literal centuries, maybe. His dad never asked them to leave or to pay a penny in rent.
+      To
+      Hank’s chagrin.</p>
+
+    <p>“They’re still around?”</p>
+
+    <p>“Oh yeah, squattin’ up there somewhere. I guess I could get rid of them now that the place is mine. But it just
+      ain’t
+      worth the trouble. Anyway, I know your dad would want them to stay. God fuckin’ knows why.”</p>
+
+    <p>Greg has no doubt there’s more to it than that—Hank wanting people around up here, even if he rarely sees them
+      and
+      considers them somewhat less than human. What else to gnash his few remaining teeth at?</p>
+
+    <p>He remembers the little girl, a sad slip of a thing. She’d be a grown woman now. Probably never left the Mountain
+      more than a day in her life. He winces at the thought.</p>
+
+    <p>She used to come down from her parents’ shack and visit the old man. For some reason. Desperate for company, Greg
+      supposes. She was odd. Barely spoke. Didn’t need to, really, as his dad was happy to fill in all the gaps in
+      conversation. He would let loose thoughtful monologues at the tiny creature as if he had no idea the girl was
+      unlikely
+      to comprehend a word of it. Say the kinds of personal things one would reserve for a confidante, a
+      brother-in-arms, a
+      shrink. Greg found it tasteless and a bit obscene, but that was Dad—no sense of boundaries. Of course, the kid
+      never
+      seemed to mind.</p>
+
+    <p>Now she has a kid of her own, one even more odd, claims Hank. </p>
+
+    <p>“He’s come down here snootin’ around a few times since your dad’s been gone. I run him off. Never says a word,
+      just
+      gawks at you with them big eyes. Gives me the fuckin’ willies. He used to sit up there when your dad was workin’
+      on
+      his truck, sit there and listen to all your dad’s b.s., just the way his mama did when she was little. Mountain
+      people
+      are a weird fuckin’ bunch. I guess them two is the last, though. I don’t suppose the world’s gonna miss them
+      much.”
+    </p>
+
+    <p><br /></p>
+
+    <p>When he gets up to his father’s cabin Greg finds the cats screaming hungry and he pours piles of food in the
+      floor
+      for them which they attack in a frenzy, fighting with each other over it despite there being plenty. But no sign
+      of
+      his father’s big greyhound. He calls her from the front porch. Nothing. All the better, he thinks. What to do with
+      all
+      these fucking cats, though?</p>
+
+    <p>The older cats won’t come up on the tables and countertops, no matter how he coaxes them, but the young ones
+      quickly
+      learn that nothing is now off-limits. Despite their recent near starvation they are all too fat and he makes
+      promises
+      to get them fit, but will soon fall into a routine of feeding them whenever they ask.</p>
+
+    <p>He spies a kid’s toy sitting on a table by the front door, inexplicable, at odds with all the rest of the junk. A
+      plaything amidst the trappings of a practical and joyless life that has long forgotten play. A little plastic
+      superhero set carefully on its feet, one fist raised as if in salute, posed. Was it there before the old man did
+      himself in? Had his dad left it as a farewell? The neighbor’s kid, as an offering? The old man would never tell,
+      and
+      the kid wouldn’t either. A secret between them forever.<br /></p>
+
+    <p>He looks around his father’s tiny cabin. Very little sign of the old man here, despite living here almost fifty
+      years. His father couldn&#39;t be bothered to take care of himself, didn’t care to invest much in his own comfort.
+      Not
+      selfless, Greg knows, just believing that taking care of things was someone else&#39;s job. His wife’s. After she
+      died
+      and there wasn&#39;t anyone to do it, all fell into disrepair, an entire life neglected. </p>
+
+    <p>Everyone thought his father was such a tough guy. But Greg knows that, in truth, he feigned toughness out of a
+      powerful vanity that was the only impulse stronger in him than fear.</p>
+
+    <p>When his wife died he crumbled and his vanity crumbled with him. Fear became his only drive and he hid up here on
+      the
+      Mountain for the rest of his days with no-one but his son and brother as witness. He batted around the compound, a
+      rudderless derelict, hopelessly adrift, slowly going under.<br /></p>
+
+    <p>The first night he’s here, Greg stands out on the front porch smoking a cigarette he found rolling around in his
+      father’s desk drawer, the last of its kind. He hasn’t smoked in years and the unfiltered tobacco makes him dizzy.
+      He
+      gazes into the darkness between the trees, feeling momentarily sentimental despite his efforts. How ignorant was
+      he as
+      a kid to see this desolate, neglected place as magical? Dim memories creep up on him, distant feelings of the
+      woods as
+      endless and full of mystery, before he got old enough to realize just how close was the highway with its trash and
+      roar and stink. With its certain, sad destinations.<br /></p>
+
+    <p>He lives off the odds and ends left in his father’s pantry and freezer for as long as they last. Frozen boxes of
+      various animal bits, “best by” dates long past. </p>
+
+    <p>Every morning he is up before the sun, wrapped in his sleeping bag at the dingy little desk, checking his bank
+      account on an ancient laptop he thinks he probably couldn’t lift with one hand.</p>
+
+    <p>Still nothing. He snaps the laptop shut and the room falls back into darkness, the morning light gray and
+      reluctant.
+      He’ll have to ask Hank for help. He stomps his socked feet against the hard wooden floor in frustration. A
+      satisfying
+      boom. He hears a rustle somewhere above him. Rats? A bird, maybe. He sits in silence for a moment, listening, but
+      hears only the early morning sounds of the forest outside.</p>
+
+    <p>He feels raw. His stomach churns and aches like he has a hangover, despite incurring no debt the night before.
+      He’s
+      up too early, but the thought of crawling back into his father’s creaky, lumpy, musty bed repels him. He nods off
+      a
+      few times sitting at the desk before forcing himself up and into the claustrophobic shower.<br /></p>
+
+    <p>Greg eyes the bathroom door before going in. That’s where his father died, hanging against that thing, he knows.
+      He
+      was found with a belt thrown over the top and the door closed to hold it, the other end buckled around his neck.
+      He
+      got drunk enough first that he wouldn’t be able to change his mind at the last moment. Just in case. If he did
+      struggle at the end there’s no sign of it now. Just a door, a simple machine his father put to sinister use. He
+      tries
+      not to imagine it. Could have been worse, Greg supposes. But he hesitates a moment before grabbing the knob and
+      going
+      in, as if the door might still hold some hint of the deed. He feels nothing but the cold metal of the knob in his
+      hand.<br /></p>
+
+    <p>Greg had a friend whose kid killed themselves while still a teenager, leaving behind a garbled note. Often when
+      he
+      spoke to his friend the conversation would turn to the short, scribbled letter, his friend obsessed with finding a
+      secret message hidden in obvious nonsense. He would bash his head against this bloodied wall again and again,
+      reading
+      and rereading his kid’s pain-addled gibberish, searching for meaning coded in screeching static. An explanation. A
+      reason. A farewell.</p>
+
+    <p>Greg’s father left nothing. Neither word nor sign. Greg feels grateful for this when he thinks of his friend’s
+      vain
+      and endless struggle.</p>
+
+    <p>More distressing even than silence—an incomprehensible message.<br /></p>
+
+    <p>Despite being shoddy and cheap, the shower is hot and strong and he drifts off again with its tiny fingers
+      massaging
+      his scalp, his back pressed against the flimsy metal of the shower wall. He half-dreams of all the cold and achy
+      people of the world and wishes them each such a momentary reprieve. How hard-won such a minor thing can be, he
+      thinks.
+      Something that should be taken for granted.<br /></p>
+
+    <p>Out on the porch again, hair wet, blood warmed. He can see no further into the forest this morning than the night
+      before, but the thick blanket of fog that clings to the trees glows bright white from the hidden morning sun. He
+      feels
+      some peace out here when all is quiet and hidden. He begins to make a habit of coming out to escape the oppressive
+      early morning gloom of the little cabin.</p>
+
+    <p>At first these morning vigils are lonely affairs, but after a few days the cats grow accustomed enough to his
+      presence that they begin to creep out on the porch with him, perching on the rail or in the chair next to his.
+      They
+      seem to desire his company even though they are yet unsure of his character. By the end of the week the largest
+      tom
+      cat has taken to curling up in his lap, on the condition that Greg not attempt to lay a finger on him. It purrs
+      silently but he can feel it—a strong, deep rumble of contentment. Greg dozes with its warm weight on his legs. The
+      sounds of the forest muffled by the heavy fog lull him, and he dreams of all the mornings his father sat here,
+      watching the forest through half-lidded eyes, a cat in his lap. Nothing changes. Nothing stays the same.<br /></p>
+
+    <p>Digging through his father’s things, he finds a trunk shoved back in the closet, locked. He can’t quite bring
+      himself
+      to care enough to search too hard for a key, or try to break it open. Can’t be anything of any value in it anyway.
+      His
+      dad’s memorabilia. Bits of junk. He kicks it and thinks it sounds empty. Just like his dad to lock an empty chest,
+      he
+      tells himself, and then wonders what he means by it. He eventually decides to forget about it. There will be many
+      things he’ll have to leave alone, things forgotten, questions unanswered, mysteries unsolved. The old trunk is
+      just
+      another of these.<br /></p>
+
+    <p>Days pass in isolation, just him and the cats and the droning of the forest around them, pierced at times by the
+      sound of Hank’s frenetic music from down the Mountain. Greg begins to feel as if he’s waiting for something, but
+      can’t
+      decide what it might be. </p>
+
+    <p>Mysterious signs appear everywhere. A mark rather like a handprint in the rime on a window. Something random
+      missing
+      from his nightstand. Strange sounds like someone weeping. One dim, misty morning, he thinks he sees shadows moving
+      between the trees but doubts his vision. The Mountain is playing tricks on him.</p>
+
+    <p>Then, three visits in as many days.<br /></p>
+
+    <p>The first is Reba, his dad’s missing greyhound. He spots her through the window one afternoon, sneaking up onto
+      the
+      porch, nose to the ground. Searching for a hint of where her old man has gone. She flees as Greg opens the door to
+      approach her, and joins a motley crew of other dogs loitering in the trees nearby, a feral pack that wanders the
+      woods
+      of the mountainside. Some abandoned, some marooned. A few escapees. </p>
+
+    <p>She watches him, a wild gray spirit between the dark trees, her long neck and ears craned toward him, curious,
+      perhaps a glimmer of recognition in her pale eyes. He calls to her and she hesitates a moment longer than the
+      others
+      before turning away. He does not see her again.<br /></p>
+
+    <p>Early the next day while he is nodding off at his father’s desk, he is visited by another silent phantom. Leaning
+      back in the little wooden chair, both it and his back creaking in complaint, he suddenly realizes a tiny white
+      face is
+      hovering in the darkness beside him. He is so startled that he nearly tumbles over backward before catching and
+      righting himself.</p>
+
+    <p>The neighbor’s kid. It makes no sound and does not react to Greg’s display of surprise. After the initial shock
+      at
+      this appearance wears off and the pounding of his heart ebbs some, Greg regards his visitor and is immediately put
+      in
+      mind of the wan, emaciated children who lurk beneath the cloak of Dickens’ Ghost of Christmas Present.
+      <em>Ignorance</em> and <em>Want</em>. This kid could be either, Greg thinks. Perhaps both.
+    </p>
+
+    <p>The longer he tries to communicate with it the more disturbed he becomes by the little creature’s unsettling
+      silence.
+      Eventually, chafed at having to stoop to Hank’s level as he sees it, Greg shoos the kid away like a stray animal.
+      It
+      turns and departs slowly, its movements oddly languid for a child. It grabs the little toy figure off the table
+      beside
+      the door as it goes, and Greg gets the uncomfortable feeling that the kid has more right to be here than he does
+      himself. Strange, but less of a stranger.<br /></p>
+
+    <p>The day after, the kid returns, this time towed behind its mother. She has the air of someone on a mission, Greg
+      thinks with a frown.</p>
+
+    <p>At the door, Greg searches her face for signs of the little girl she had been but sees not a glimmer. She looks
+      like
+      any other adult now. Tired, spent.</p>
+
+    <p>“I was real sorry to hear about your daddy,” she says, stepping past him into the cabin, “he was a good man.”</p>
+
+    <p>Greg nods silently, the only answer he can muster at the moment.</p>
+
+    <p>“Do you know why he done it?” She asks, wanting to understand, an imploring look in her eyes. As if Greg is any
+      more
+      likely to be privy to such knowledge than she.</p>
+
+    <p>“Sick of living, I guess,” Greg tells her bluntly.</p>
+
+    <p>She nods as if this explains everything. As if she understands. Perhaps she does.</p>
+
+    <p>“I ain’t been sleeping,” she tells Greg, seemingly apropos of nothing. </p>
+
+    <p>After a moment of awkward silence she adds “Your daddy was real good about helping me out.” Her voice is weak,
+      hesitant. A pleading edge.</p>
+
+    <p>“Helping you out?” Greg asks.</p>
+
+    <p>“With medicine,” she explains.</p>
+
+    <p><em>Of course.</em></p>
+
+    <p>Without another word, he goes into the bathroom and opens the medicine cabinet behind the mirror where he finds a
+      prescription bottle of pain medication. He grabs it and gives it a shake. Half full, about. </p>
+
+    <p>As he turns to leave the bathroom he stumbles over the kid who’s appeared behind him, something shiny in its
+      grubby
+      little hand. Greg sees it’s his dad’s straight razor and quickly snatches it away.</p>
+
+    <p>“Not a toy,” he says, tossing the razor into the sink with a clatter.</p>
+
+    <p>He takes the bottle to the woman and when she sees it her eyes light up like a cat spotting a mouse.</p>
+
+    <p>“Thank you so much!” she says, snatching the bottle from him.</p>
+
+    <p>She stops herself as she turns to go.</p>
+
+    <p>“I sure will miss him.”</p>
+
+    <p>Greg nods in acknowledgment more than agreement. As she leaves she grabs the kid by the arm and drags it after
+      her
+      when it shows no sign of following on its own.</p>
+
+    <p>Greg can see she’s eager to get the pills down. Maybe with a vodka chaser. </p>
+
+    <p><em>Sweet dreams.</em><br /></p>
+
+    <p>The kid is back by sunset that night, alone. Its arms and face are smeared with something that looks black in the
+      half light but red when Greg looks more closely. Blood gone tacky, a few hours old. Too much for a bloody nose.
+      Greg
+      looks the kid over but sees no wounds. </p>
+
+    <p>“Are you hurt? Whose blood is this?” Greg asks it, but gets the answer he expects—the kid stares at him silently.
+    </p>
+
+    <p>“Where’s your mama? Is she hurt?” </p>
+
+    <p>Silence.</p>
+
+    <p>Greg sighs heavily. “Show me where your house is,” Greg tells the kid, more annoyed than concerned. He imagines
+      the
+      woman fallen in a drugged-up stupor, her head split open on a hard kitchen floor or upon cement steps to a back
+      yard.
+    </p>
+
+    <p>It’s a lot of blood.</p>
+
+    <p>Greg pulls a hoodie over his head, feeling a momentary sting of shame as the kid’s in a ragged t-shirt and
+      shorts,
+      its feet bare, though it doesn’t seem to mind the chill.</p>
+
+    <p>“Show me your house,” Greg repeats his command to the child. He pushes it toward the door when it shows no sign
+      of
+      moving. It plods off at a medium pace, heading down the porch stairs and out into the woods. Greg follows.</p>
+
+    <p>A path takes them between the trees, higher up the Mountain, and ends in a small, shabby shack. The windows are
+      dark,
+      no sign of lights within, though the sun is down now and dim evening has claimed the woods around it. </p>
+
+    <p>The kid walks straight up to the front and goes in, letting the ragged screen door swing shut behind him. Greg
+      catches it before it slams and follows the kid into the cramped little house. </p>
+
+    <p>“Hello there!” Greg calls out, but the house is as silent as his guide.</p>
+
+    <p>The kid goes down a little hallway and through a doorway at the end. Greg steels himself as he enters after it,
+      half
+      expecting the woman to be sprawled on the floor somewhere in a pool of blood. </p>
+
+    <p>The woman lies in bed, atop the bedspread, dressed in the same clothes she wore when he saw her. Her skin is so
+      pale
+      it seems to shine in the darkness, the shadows around her eyes so deep he can’t tell if they are open or shut but
+      he
+      feels as if she’s staring across the room at him.</p>
+
+    <p>The kid takes something off the nightstand next to the bed and then crawls into bed next to her, curling up
+      against
+      her. The woman is utterly still. </p>
+
+    <p>One of her arms and the side of the bed are streaked and stained dark.</p>
+
+    <p>Greg creeps toward the bed and looks more closely, hesitant, like he fears a wild animal there, ready to strike.
+      Her
+      arm is slashed to ribbons. Maybe a dozen deep cuts. Maybe more. The bottle of pain pills is on the nightstand next
+      to
+      her, beside a nearly empty bottle of whiskey. The bed clothes appear soaked with blood.</p>
+
+    <p>At first he thinks she’s taken his father’s example and done herself in. Her hands are empty, but he sees the
+      kid’s
+      are not. In one hand it holds what looks like his father’s straight razor. He can see its glint in the darkness.
+      The
+      kid must have snatched it again after Greg took it away. A terrible thought strikes him.</p>
+
+    <p>“Did you do this?” he asks the kid, the cold grip of shock closing around him.</p>
+
+    <p>The kid holds the blade up to Greg as if showing him a new toy, dark eyes fixed on the gleaming, bloody blade.
+    </p>
+
+    <p>Greg studies the woman’s face. She does not look like she’s sleeping. She looks like a lifeless thing. “She’s
+      fucking
+      dead,” Greg tells the kid, surprised by the flat, expressionless tone of his own voice.</p>
+
+    <p>As he stands frozen, staring at the dead woman, the kid reaches up and opens her cheek up with the razor in one
+      stroke, like drawing a line with a pencil on smooth paper. The skin pulls back to reveal the woman’s teeth in a
+      grisly
+      lopsided grin. The kid turns back toward Greg and holds the blade up to him again, sharing a new discovery, its
+      eyes
+      still locked on the blade in apparent fascination.</p>
+
+    <p>Greg quickly steps toward the bed and reaches out to take the razor from the kid, terror at the thought of
+      witnessing
+      further mutilation breaking through his shock. The kid cuts Greg’s hand in a single, swift motion, laying the skin
+      of
+      his palm open in a wide gash. Greg hisses in pain and surprise, snatches his wounded hand back, staring in
+      momentary
+      disbelief at the cut. Slowly it begins to dribble blood and Greg grasps it with his other hand, looking up at the
+      kid,
+      transfixed.</p>
+
+    <p>“You little fucking bastard,” he says in a voice still oddly emotionless, as if the kid’s strange apathy has
+      infected
+      him.</p>
+
+    <p>Moments pass as the blood from Greg’s hand begins to run down the front of him, soaking his shirt and coating his
+      other hand in slippery gore.</p>
+
+    <p>Suddenly, on some silent cue, Greg turns and strides from the room, down the hall, out the door, and back down
+      the
+      path, walking swiftly and clutching his hand, which has begun to burn like it’s gripping hot coals.<br /></p>
+
+    <p>He heads back to his father’s cabin in the dark, holding his bleeding hand against his chest, nearly losing his
+      way
+      several times, stumbling often on the uneven path.</p>
+
+    <p>When he finally finds his way back he wraps a torn shirt around the wound and stands in the middle of the room
+      for
+      several minutes before a resolve like panic suddenly seizes him, another silent cue, and he begins throwing his
+      meager
+      belongings into his backpack, mindlessly piling it all in and heading for the door like a man threatened by fire.
+    </p>
+
+    <p>At the last moment he drops his pack, grabs the heavy bag of cat food and up-ends it onto the floor, scattering
+      its
+      remaining contents with a clatter. He grabs his pack again and pushes his way out the door.</p>
+
+    <p>As he heads for the truck his eyes search the darkness in horrified shame, but there is no sign of witness. He
+      throws
+      his loaded backpack into the back and hops in, starts the engine, and tears out of the compound going too fast,
+      fighting the urge to floor the gas and race down the dark, narrow road.</p>
+
+    <p>He figures the woman’s body could lie up there undiscovered for a very long time. Years, maybe. He imagines the
+      kid
+      going feral, growing up wild and living off the land while its mother’s body rots in bed. Or maybe it’ll just curl
+      up
+      next to her and wither away.</p>
+
+    <p>He follows the winding road back down the mountainside. As the distance between him and the top of the Mountain
+      grows, a powerful feeling of relief grows with it. As if distance is enough.</p>
+
+    <p>It is not until he’s almost reached the foot of the Mountain that he remembers he has nowhere to go.</p>
+
+  </div>
+
+  <script>
+    // Function to count lines in the content
+    function countLines(contentId) {
+      const content = document.getElementById(contentId);
+      const lines = content.innerText.split(/\r\n|\r|\n/).length;
+      return lines;
+    }
+
+    // Function to update the line count as the user scrolls
+    function updateLineCount(contentId, lineCountId) {
+      const content = document.getElementById(contentId);
+      const lineCountElem = document.getElementById(lineCountId);
+      const totalLines = countLines(contentId);
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolledPercentage = scrollTop / scrollHeight;
+      const linesLeft = Math.max(0, Math.round(totalLines * (1 - scrolledPercentage)));
+      lineCountElem.innerText = `${linesLeft} lines left`;
+    }
+
+    // Update the progress bar as the user scrolls
+    window.onscroll = function () {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+      updateLineCount('content', 'lineCount');
+    };
+
+    // Initialize line count when the page loads
+    window.onload = function () {
+      updateLineCount('content', 'lineCount');
+    };
+  </script>
 
 </body>
 
