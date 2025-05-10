@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Unit Circle</title>
+  <style>
+    canvas { border: 1px solid #ccc; display: block; margin: 20px auto; }
+  </style>
+</head>
+<body>
+  <canvas id="unitCircle" width="500" height="500"></canvas>
+  <script>
+    const canvas = document.getElementById('unitCircle');
+    const ctx = canvas.getContext('2d');
+    const center = { x: canvas.width / 2, y: canvas.height / 2 };
+    const radius = Math.min(canvas.width, canvas.height) * 0.4;
+    let dragging = false;
+    let handle = { x: center.x + radius, y: center.y };
+    let tickPoints = [];
+
+    const exactValues = {
+      0:   { cos: '1',             sin: '0' },
+      15:  { cos: '(√6+√2)/4',    sin: '(√6-√2)/4' },
+      30:  { cos: '√3/2',          sin: '1/2' },
+      45:  { cos: '√2/2',          sin: '√2/2' },
+      60:  { cos: '1/2',           sin: '√3/2' },
+      75:  { cos: '(√6-√2)/4',    sin: '(√6+√2)/4' },
+      90:  { cos: '0',             sin: '1' },
+      105: { cos: '-(√6-√2)/4',   sin: '(√6+√2)/4' },
+      120: { cos: '-1/2',          sin: '√3/2' },
+      135: { cos: '-√2/2',         sin: '√2/2' },
+      150: { cos: '-√3/2',         sin: '1/2' },
+      165: { cos: '-(√6+√2)/4',   sin: '(√6-√2)/4' },
+      180: { cos: '-1',            sin: '0' },
+      195: { cos: '-(√6+√2)/4',   sin: '-(√6-√2)/4' },
+      210: { cos: '-√3/2',         sin: '-1/2' },
+      225: { cos: '-√2/2',         sin: '-√2/2' },
+      240: { cos: '-1/2',          sin: '-√3/2' },
+      255: { cos: '-(√6-√2)/4',   sin: '-(√6+√2)/4' },
+      270: { cos: '0',             sin: '-1' },
+      285: { cos: '(√6-√2)/4',    sin: '-(√6+√2)/4' },
+      300: { cos: '1/2',           sin: '-√3/2' },
+      315: { cos: '√2/2',          sin: '-√2/2' },
+      330: { cos: '√3/2',          sin: '-1/2' },
+      345: { cos: '(√6+√2)/4',    sin: '-(√6-√2)/4' }
+    };
+
+    function gcd(a, b) {
+      return b ? gcd(b, a % b) : a;
+    }
+
+    function radianLabel(deg) {
+      const multiple = deg / 15;
+      const num = multiple;
+      const den = 12;
+      const g = gcd(num, den);
+      const n = num / g;
+      const d = den / g;
+      if (deg === 0) return '0';
+      if (d === 1) {
+        if (n === 1) return 'π';
+        if (n === -1) return '-π';
+        return n + 'π';
+      }
+      if (n === 1) return 'π/' + d;
+      if (n === -1) return '-π/' + d;
+      return n + 'π/' + d;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      tickPoints = [];
+
+      // Draw bisectors
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+      ctx.moveTo(0, center.y);
+      ctx.lineTo(canvas.width, center.y);
+      ctx.moveTo(center.x, 0);
+      ctx.lineTo(center.x, canvas.height);
+      ctx.stroke();
+
+      // Radiating lines to ticks
+      ctx.strokeStyle = '#ddd';
+      for (let deg = 0; deg < 360; deg += 15) {
+        const rad = deg * Math.PI / 180;
+        ctx.beginPath();
+        ctx.moveTo(center.x, center.y);
+        ctx.lineTo(center.x + Math.cos(rad) * radius, center.y - Math.sin(rad) * radius);
+        ctx.stroke();
+      }
+
+      // Draw unit circle
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, radius, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      // Draw ticks & labels
+      ctx.font = '12px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      for (let deg = 0; deg < 360; deg += 15) {
+        const rad = deg * Math.PI / 180;
+        const cos = Math.cos(rad);
+        const sin = Math.sin(rad);
+        const xLabel = center.x + cos * (radius + 20);
+        const yLabel = center.y - sin * (radius + 20);
+        ctx.fillStyle = 'blue';
+        ctx.fillText(deg + '°', xLabel, yLabel - 8);
+        tickPoints.push({ angle: rad, x: xLabel, y: yLabel - 8 });
+        ctx.fillStyle = 'green';
+        ctx.fillText(radianLabel(deg), xLabel, yLabel + 8);
+        tickPoints.push({ angle: rad, x: xLabel, y: yLabel + 8 });
+      }
+      ctx.fillStyle = 'black';
+
+      // Draw radius (hypotenuse)
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.lineTo(handle.x, handle.y);
+      ctx.stroke();
+
+      // Compute angle & trig values
+      const dx = handle.x - center.x;
+      const dy = center.y - handle.y;
+      let angleRad = Math.atan2(dy, dx);
+      if (angleRad < 0) angleRad += 2 * Math.PI;
+      const cosVal = Math.cos(angleRad);
+      const sinVal = Math.sin(angleRad);
+
+      // Exact or decimal labels
+      const tickIndex = Math.round(angleRad / (Math.PI / 12));
+      const degTick = ((tickIndex * 15) + 360) % 360;
+      const onTick = Math.abs(angleRad - tickIndex * (Math.PI / 12)) < 1e-6;
+      const cosLabel = onTick && exactValues[degTick] ? exactValues[degTick].cos : cosVal.toFixed(2);
+      const sinLabel = onTick && exactValues[degTick] ? exactValues[degTick].sin : sinVal.toFixed(2);
+
+      // Draw triangle legs
+      const foot = { x: handle.x, y: center.y };
+      ctx.strokeStyle = 'blue';
+      ctx.beginPath();
+      ctx.moveTo(handle.x, handle.y);
+      ctx.lineTo(foot.x, foot.y);
+      ctx.stroke();
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.moveTo(center.x, center.y);
+      ctx.lineTo(foot.x, foot.y);
+      ctx.stroke();
+
+      // Label leg lengths
+      ctx.font = '14px Arial';
+      ctx.fillStyle = 'red';
+      ctx.fillText(cosLabel, (center.x + foot.x) / 2, center.y + 15);
+      ctx.fillStyle = 'blue';
+      const sinOffsetX = handle.x > center.x ? -15 : 15;
+      ctx.fillText(sinLabel, foot.x + sinOffsetX, (handle.y + foot.y) / 2);
+      ctx.fillStyle = 'black';
+
+      // Draw handle
+      ctx.fillStyle = 'red';
+      ctx.beginPath();
+      ctx.arc(handle.x, handle.y, 5, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.fillStyle = 'black';
+
+      // Display angle in top-right
+      ctx.font = '16px Arial';
+      ctx.textAlign = 'right';
+      ctx.fillText(`${(angleRad * 180 / Math.PI).toFixed(1)}° / ${angleRad.toFixed(2)} rad`, canvas.width - 10, 20);
+      ctx.textAlign = 'center';
+    }
+
+    function isOverHandle(x, y) {
+      return Math.hypot(x - handle.x, y - handle.y) < 10;
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (isOverHandle(x, y)) dragging = true;
+    });
+    canvas.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const dx = x - center.x;
+      const dy = center.y - y;
+      const dist = Math.hypot(dx, dy);
+      handle.x = center.x + (dx / dist) * radius;
+      handle.y = center.y - (dy / dist) * radius;
+      draw();
+    });
+    canvas.addEventListener('mouseup', () => dragging = false);
+    canvas.addEventListener('mouseout', () => dragging = false);
+    canvas.addEventListener('click', e => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      for (const tp of tickPoints) {
+        if (Math.hypot(x - tp.x, y - tp.y) < 10) {
+          handle.x = center.x + Math.cos(tp.angle) * radius;
+          handle.y = center.y - Math.sin(tp.angle) * radius;
+          draw();
+          break;
+        }
+      }
+    });
+
+    draw();
+  </script>
+</body>
+</html>
