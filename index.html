@@ -1,31 +1,246 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<title>CG Writer</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human + AI Tutoring | Chris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-deep:#0f172a;           /* slate-900 */
+      --ink:#0b1220;               /* deep ink */
+      --muted:#5b6b82;             /* slate-ish */
+      --card:#ffffff;
+      --brand:#16a34a;             /* green-600 */
+      --brand-2:#7c3aed;           /* violet-600 */
+      --brand-3:#22d3ee;           /* cyan-400 */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;color:#1f2937;background:linear-gradient(135deg,#ecfdf5 0%,#e2f5ff 40%,#0f172a 100%) fixed;}
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+    .btn{display:inline-block;padding:.9rem 1.25rem;border-radius:1rem;font-weight:600;text-decoration:none}
+    .btn-primary{background:var(--brand);color:#fff;box-shadow:0 8px 24px rgba(22,163,74,.25)}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-ghost{background:#fff;color:var(--brand);box-shadow:0 8px 24px rgba(255,255,255,.25)}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(10px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(15,23,42,.06);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;color:#0f172a}
+    .brand svg{width:34px;height:34px}
+    .navlinks{display:flex;gap:1.25rem}
+    .navlinks a{font-weight:600;color:#0f172a;text-decoration:none;opacity:.9}
+    .navlinks a:hover{opacity:1}
 
-    <style>
-      body {
-        font-family: "Courier Prime", monospace;
-	background-color:black;
-        margin:50px
-      }
-      a {
-        text-decoration: none;
-        color: red;
-      }
-      
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
-	</head>
+    /* HERO */
+    .hero{position:relative;overflow:hidden;padding:5rem 0}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .hero h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.05;margin:.25rem 0 .75rem;color:#0b1220}
+    .lede{font-size:1.1rem;color:#475569;max-width:38ch}
+    .hero-art{position:relative;border-radius:28px;height:360px;background:linear-gradient(135deg,rgba(34,211,238,.25),rgba(124,58,237,.3)),radial-gradient(1200px 600px at 100% 0%,rgba(124,58,237,.25),transparent 70%),radial-gradient(800px 500px at 0% 100%,rgba(34,197,94,.28),transparent 70%),#0f172a;box-shadow:0 30px 80px rgba(15,23,42,.45);display:flex;align-items:center;justify-content:center}
+    .hero-kicker{display:inline-block;font-weight:700;letter-spacing:.06em;color:var(--brand);background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);padding:.3rem .65rem;border-radius:.6rem}
+    .shape{position:absolute;border-radius:999px;filter:blur(32px);opacity:.55}
+    .shape.a{width:160px;height:160px;background:#a7f3d0;left:-40px;top:-40px}
+    .shape.b{width:220px;height:220px;background:#ddd6fe;right:-60px;bottom:-60px}
+
+    /* HOW IT WORKS */
+    section{padding:4rem 0}
+    .section-title{font-size:clamp(1.65rem,3.4vw,2.2rem);text-align:center;margin:0 0 1.5rem;color:#0b1220}
+    .muted{color:#64748b;text-align:center;max-width:70ch;margin:0 auto 2.25rem}
+    .grid{display:grid;gap:1.2rem}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:#ffffffd9;border:1px solid rgba(15,23,42,.06);backdrop-filter:blur(8px);border-radius:20px;padding:1.25rem;box-shadow:0 12px 30px rgba(15,23,42,.08)}
+    .card h3{margin:.2rem 0 .35rem;font-size:1.05rem}
+    .card p{margin:0;color:#5b6b82}
+    .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#e9ffe8,#e6e6ff);margin-bottom:.5rem}
+
+    /* SERVICES */
+    .service{transition:.2s ease;}
+    .service:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(15,23,42,.12)}
+
+    /* CTA */
+    .cta{color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand-2));text-align:center;border-top:1px solid rgba(255,255,255,.15)}
+
+    /* FOOTER */
+    footer{padding:2.25rem 0;color:#e2e8f0;background:#0f172a}
+
+    /* RESPONSIVE */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-art{height:260px}
+      .grid.cols-4{grid-template-columns:1fr 1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+  </style>
+</head>
 <body>
-<a href="nothing.html">Worse Than Nothing</a>
-<br>
-<br /><a href="hollow.html">Hollow Victory</a>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Logo: a tree branching into circuits">
+        <!-- Inline SVG Logo: Tree + Circuits -->
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hybrid tree-circuit logo">
+          <circle cx="32" cy="32" r="30" stroke="#16a34a" stroke-width="2" fill="url(#g)"/>
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="64" y2="64">
+              <stop offset="0" stop-color="#dcfce7"/>
+              <stop offset="1" stop-color="#e9d5ff"/>
+            </linearGradient>
+          </defs>
+          <!-- Trunk -->
+          <path d="M32 44v10" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+          <!-- Branches (organic) -->
+          <path d="M32 44c0-8 12-10 12-18 0-5-4-8-8-8-3 0-4 2-4 2s-1-2-4-2c-4 0-8 3-8 8 0 8 12 10 12 18z" fill="#16a34a" opacity=".9"/>
+          <!-- Circuit nodes -->
+          <circle cx="44" cy="22" r="2" fill="#22d3ee"/>
+          <circle cx="20" cy="22" r="2" fill="#22d3ee"/>
+          <circle cx="32" cy="16" r="2" fill="#22d3ee"/>
+          <!-- Circuit traces -->
+          <path d="M32 18v6M32 24c4 0 8-2 12-2M32 24c-4 0-8-2-12-2" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Human + AI Tutoring</span>
+      </div>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Book a Session</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-kicker">Smarter together</span>
+        <h1>Human Insight <span style="color:var(--brand)">+</span> AI Precision</h1>
+        <p class="lede">Personalized tutoring that blends the empathy of a real teacher with the adaptability and instant feedback of AI.</p>
+        <div style="margin-top:1.25rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#contact">Get Started</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="shape a"></div>
+        <div class="shape b"></div>
+        <svg width="88%" viewBox="0 0 800 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Abstract grid morphing into leaves (tech + nature) -->
+          <defs>
+            <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#22d3ee"/>
+              <stop offset="1" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <!-- Grid -->
+          <g opacity=".35" stroke="url(#gg)">
+            <path d="M0 40 H800"/><path d="M0 80 H800"/><path d="M0 120 H800"/><path d="M0 160 H800"/><path d="M0 200 H800"/><path d="M0 240 H800"/><path d="M0 280 H800"/><path d="M0 320 H800"/>
+            <path d="M80 0 V360"/><path d="M160 0 V360"/><path d="M240 0 V360"/><path d="M320 0 V360"/><path d="M400 0 V360"/><path d="M480 0 V360"/><path d="M560 0 V360"/><path d="M640 0 V360"/><path d="M720 0 V360"/>
+          </g>
+          <!-- Leaves / neural branches -->
+          <g opacity=".9">
+            <path d="M600 210c40-30 70-60 80-110" stroke="#86efac" stroke-width="4" stroke-linecap="round"/>
+            <path d="M600 210c-25-10-45-20-70-55" stroke="#a5b4fc" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="680" cy="96" r="6" fill="#22d3ee"/>
+            <circle cx="540" cy="170" r="5" fill="#22d3ee"/>
+          </g>
+          <!-- Chalky math badge -->
+          <g>
+            <rect x="60" y="70" rx="14" ry="14" width="210" height="120" fill="rgba(15,23,42,.6)" stroke="#22d3ee"/>
+            <text x="80" y="115" font-family="monospace" font-size="20" fill="#e2e8f0">lim_{x->0} sin x / x = 1</text>
+            <text x="80" y="145" font-family="monospace" font-size="20" fill="#e2e8f0">d/dx x^2 = 2x</text>
+            <text x="80" y="175" font-family="monospace" font-size="20" fill="#e2e8f0">\u03C0 r^2,  a^2+b^2=c^2</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <p class="muted">AI handles adaptive practice and instant feedback. I focus on explanation, motivation, and higher‑order problem solving.
+      </p>
+      <div class="grid cols-4">
+        <article class="card">
+          <div class="icon"><span>🔎</span></div>
+          <h3>AI Insight</h3>
+          <p>Real‑time analysis spots patterns, misconceptions, and readiness.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><span>🎓</span></div>
+          <h3>Tutor Guidance</h3>
+          <p>I jump in with clarity, strategy, and the right nudge at the right time.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><span>📈</span></div>
+          <h3>Student Progress</h3>
+          <p>Targeted practice builds fluency, not just answers.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><span>🔁</span></div>
+          <h3>Feedback Loop</h3>
+          <p>We adapt continuously—faster gains, fewer gaps.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <div class="grid cols-3">
+        <article class="card service">
+          <h3>K‑12 Math Tutoring</h3>
+          <p>From foundations to algebra, geometry, and AP calculus with hybrid AI+human guidance.</p>
+        </article>
+        <article class="card service">
+          <h3>College Math Support</h3>
+          <p>Calculus, linear algebra, proofs, and test prep—efficient, rigorous, and friendly.</p>
+        </article>
+        <article class="card service">
+          <h3>Study Skills & Confidence</h3>
+          <p>AI handles drills; I teach strategy, metacognition, and focus to thrive academically.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About this approach</h2>
+      <p class="muted">It’s not AI <em>instead</em> of a tutor. It’s AI <strong>with</strong> a tutor—bringing the best of both: precision and empathy.</p>
+      <div class="card" style="max-width:860px;margin:1.25rem auto 0">
+        <p style="margin:0">I use an augmented model: the AI provides immediate, step‑wise feedback and tailored practice while I mentor, explain concepts deeply, and keep learning human—motivating students and building confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2 class="section-title" style="color:#fff;margin-bottom:.5rem">Ready to learn smarter?</h2>
+      <p class="muted" style="color:#e5e7eb;margin-bottom:1.5rem">Book a session or ask a question—I'll reply quickly with availability and next steps.</p>
+      <a class="btn btn-ghost" href="mailto:chris@example.com?subject=Tutoring%20Inquiry">Email Me</a>
+      <div style="margin-top:1rem;color:#e2e8f0">Prefer text? <a href="tel:+15551234567" style="color:#fff;text-decoration:underline">(555) 123‑4567</a></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
+      <div style="opacity:.8">© <span id="y"></span> Human + AI Tutoring</div>
+      <div style="opacity:.8">Madera, CA • Remote & local sessions</div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
-
