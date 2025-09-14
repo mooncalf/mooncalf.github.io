@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Horror Movie Night — Picks (Neon)</title>
+<style>
+  /* ===== Theme tokens ===== */
+  :root {
+    --bg: #0a0b10;
+    --bg-accent: radial-gradient(1200px 800px at 10% 20%, rgba(76, 201, 240, 0.12), transparent 60%),
+                 radial-gradient(900px 600px at 90% 80%, rgba(255, 111, 145, 0.12), transparent 65%),
+                 radial-gradient(900px 600px at 40% 70%, rgba(111, 255, 195, 0.10), transparent 65%);
+    --card: #101422EE;
+    --text: #eaf2ff;
+    --muted: #9fb3c9;
+    --accent: #4cc9f0;
+    --accent-2: #ff6f91;
+    --ring: #7cffcb;
+    --glow: 0 0 18px rgba(76,201,240,.35), 0 0 36px rgba(255,111,145,.25);
+    --poster-bg: #0c0f18;
+    --chip-bg: #141a29;
+    --chip-fg: #cde4ff;
+    --border: linear-gradient(135deg, rgba(124,255,203,.7), rgba(76,201,240,.6), rgba(255,111,145,.6));
+  }
+  html[data-theme="light"] {
+    --bg: #f7f9fe;
+    --bg-accent: radial-gradient(1200px 800px at 10% 20%, rgba(76,201,240,.20), transparent 60%),
+                 radial-gradient(900px 600px at 90% 80%, rgba(255,111,145,.18), transparent 65%),
+                 radial-gradient(900px 600px at 40% 70%, rgba(124,255,203,.18), transparent 65%);
+    --card: #ffffffF2;
+    --text: #10151f;
+    --muted: #516070;
+    --accent: #0077ff;
+    --accent-2: #d41b63;
+    --ring: #00c389;
+    --glow: 0 0 10px rgba(0,119,255,.25), 0 0 22px rgba(212,27,99,.20);
+    --poster-bg: #eaf2ff;
+    --chip-bg: #eef4ff;
+    --chip-fg: #112032;
+  }
+
+  /* ===== Base ===== */
+  * { box-sizing: border-box }
+  html, body { height: 100% }
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .bgfx {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: var(--bg-accent);
+    filter: saturate(120%);
+    z-index: -1;
+  }
+  header {
+    padding: 22px clamp(14px, 4vw, 28px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+  }
+  h1 {
+    margin: 0; line-height: 1.15; font-weight: 800;
+    letter-spacing: 0.2px;
+    font-size: clamp(1.25rem, 1.1rem + 2vw, 2.2rem);
+    background: linear-gradient(92deg, var(--accent), var(--accent-2) 55%, var(--ring));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: var(--glow);
+  }
+  .sub {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+  .controls { display: flex; gap: 10px; align-items: center; justify-content: end; }
+  .btn {
+    border: none; cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--text);
+    background: linear-gradient(140deg, rgba(76,201,240,.15), rgba(255,111,145,.16));
+    outline: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), var(--glow);
+    backdrop-filter: blur(6px);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 8px 24px rgba(0,0,0,.22), var(--glow); }
+  .hint { color: var(--muted); font-size: .86rem }
+
+  /* ===== Grid ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: clamp(14px, 3vw, 20px);
+    padding: 6px clamp(14px, 4vw, 28px) 26px;
+    max-width: 1280px;
+    margin: 0 auto 20px;
+  }
+  .card {
+    position: relative;
+    border-radius: 16px;
+    background: var(--card);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    transition: transform .15s ease, box-shadow .15s ease;
+    display: flex; flex-direction: column;
+    outline: 1px solid rgba(255,255,255,.05);
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,.45); }
+  .card::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: 18px;
+    padding: 1px;
+    background: var(--border);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+  .poster-wrap { background: var(--poster-bg); }
+  .poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    filter: saturate(110%);
+  }
+  .body {
+    padding: 12px 14px 14px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: start;
+  }
+  .title {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    letter-spacing: .2px;
+  }
+  .title a { color: var(--text); text-decoration: none; }
+  .title a:hover { text-decoration: underline; color: var(--accent); }
+  .year {
+    font-size: .92rem;
+    color: var(--muted);
+    margin-left: 8px;
+    align-self: center;
+    white-space: nowrap;
+  }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; grid-column: 1 / -1; }
+  .chip {
+    background: linear-gradient(160deg, var(--chip-bg), transparent);
+    color: var(--chip-fg);
+    border: 1px solid rgba(255,255,255,.08);
+    padding: 4px 8px; border-radius: 999px; font-size: .78rem;
+  }
+  footer { text-align: center; color: var(--muted); padding: 22px; font-size: .9rem; }
+
+  /* ===== Tiny neon scanline flourish ===== */
+  .scan {
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.03) 1px, transparent 1px, transparent 2px);
+    opacity: .15; pointer-events: none;
+    mix-blend-mode: soft-light;
+  }
+
+</style>
+</head>
+<body>
+<div class="bgfx" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<header>
+  <div>
+    <h1>Horror Movie Night — Neon Picks</h1>
+    <p class="sub">Click a card to open the JustWatch page. Press <b>T</b> to toggle theme.</p>
+  </div>
+  <div class="controls">
+    <button class="btn" id="themeBtn" aria-pressed="false" aria-label="Toggle dark or light theme">Toggle Theme</button>
+  </div>
+</header>
+
+<section class="grid">
+  <!-- Weapons -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/weapons-2026" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Weapons (2025) poster" src="https://images.justwatch.com/poster/334329353/s592/weapons-2026" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/weapons-2026" target="_blank" rel="noopener noreferrer">Weapons</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">Feature</span><span class="chip">Thriller/Horror</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Misery -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/misery-stephen-king" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Misery (1990) poster" src="https://images.justwatch.com/poster/240570747/s592/misery-stephen-king" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/misery-stephen-king" target="_blank" rel="noopener noreferrer">Misery</a></h3>
+      <span class="year">1990</span>
+      <div class="chips">
+        <span class="chip">Stephen King</span><span class="chip">Classic</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Bring Her Back -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/bring-her-back" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Bring Her Back (2025) poster" src="https://images.justwatch.com/poster/333137755/s592/bring-her-back" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/bring-her-back" target="_blank" rel="noopener noreferrer">Bring Her Back</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">New Release</span><span class="chip">Mystery</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Scanners -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/scanners" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Scanners (1981) poster" src="https://images.justwatch.com/poster/319842733/s592/scanners" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/scanners" target="_blank" rel="noopener noreferrer">Scanners</a></h3>
+      <span class="year">1981</span>
+      <div class="chips">
+        <span class="chip">Cronenberg</span><span class="chip">Body Horror</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Until Dawn -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/until-dawn" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Until Dawn (2025) poster" src="https://images.justwatch.com/poster/330285827/s592/until-dawn" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/until-dawn" target="_blank" rel="noopener noreferrer">Until Dawn</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">Survival</span><span class="chip">Thriller</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Don't Log Off -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/dont-log-off" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Don't Log Off (2025) poster" src="https://images.justwatch.com/poster/332085140/s592/dont-log-off" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/dont-log-off" target="_blank" rel="noopener noreferrer">Don’t Log Off</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">Screenlife</span><span class="chip">Thriller</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Come True -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/come-true" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Come True (2020) poster" src="https://images.justwatch.com/poster/244909219/s592/come-true" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/come-true" target="_blank" rel="noopener noreferrer">Come True</a></h3>
+      <span class="year">2020</span>
+      <div class="chips">
+        <span class="chip">Dream Horror</span><span class="chip">Indie</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Forgive Us All -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/forgive-us-all" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="Forgive Us All (2025) poster" src="https://images.justwatch.com/poster/335443608/s592/forgive-us-all" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/forgive-us-all" target="_blank" rel="noopener noreferrer">Forgive Us All</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">Psychological</span><span class="chip">Dark</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- The Woman in the Yard -->
+  <article class="card">
+    <a class="poster-wrap" href="https://www.justwatch.com/us/movie/the-woman-in-the-yard" target="_blank" rel="noopener noreferrer">
+      <img class="poster" alt="The Woman in the Yard (2025) poster" src="https://images.justwatch.com/poster/328213477/s592/the-woman-in-the-yard" />
+    </a>
+    <div class="body">
+      <h3 class="title"><a href="https://www.justwatch.com/us/movie/the-woman-in-the-yard" target="_blank" rel="noopener noreferrer">The Woman in the Yard</a></h3>
+      <span class="year">2025</span>
+      <div class="chips">
+        <span class="chip">Suspense</span><span class="chip">Mystery</span>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<footer>
+  Posters courtesy of <span style="opacity:.9">JustWatch</span>. Theme is remembered per browser.
+</footer>
+
+<script>
+  // Theme toggle with persistence and keyboard shortcut (T)
+  const key = "hmn-theme";
+  const btn = document.getElementById("themeBtn");
+  const root = document.documentElement;
+
+  function setTheme(mode) {
+    if (mode === "light") root.setAttribute("data-theme", "light");
+    else root.removeAttribute("data-theme");
+    localStorage.setItem(key, mode);
+    btn.setAttribute("aria-pressed", mode === "light" ? "true" : "false");
+    btn.textContent = mode === "light" ? "Switch to Dark" : "Switch to Light";
+  }
+
+  // Initialize (respect saved pref or prefers-color-scheme)
+  const saved = localStorage.getItem(key);
+  if (saved) setTheme(saved);
+  else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    setTheme("light");
+  } else {
+    setTheme("dark");
+  }
+
+  btn.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
+    setTheme(current === "light" ? "dark" : "light");
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key.toLowerCase() === "t") btn.click();
+  });
+</script>
+</body>
+</html>
